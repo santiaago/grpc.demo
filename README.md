@@ -203,3 +203,11 @@ Got: dlroW ,olleH
 Press any key to exit...
 ~~~
 
+Resources:
+
+* [c# quickstart](http://www.grpc.io/docs/quickstart/csharp.html)
+* [grpc repo](https://github.com/grpc/grpc)
+* [protocol buffers - Language Guide](https://developers.google.com/protocol-buffers/docs/proto)
+* [grpc Go Quick start](http://www.grpc.io/docs/quickstart/go.html)
+* [Go support for Google's protocol buffers](https://github.com/golang/protobuf)
+
