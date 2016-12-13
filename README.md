@@ -128,3 +128,16 @@ client:
 2016/12/13 14:29:20 Reversed string:  dlrow ,olleH
 ~~~
 
+## csharp
+
+* install `Grpc.Core`, `Grpc.Tools` and `Google.Protobuf` from NuGet.
+* generate c# stub:
+
+~~~
+...\csharp.client
+> .\packages\Grpc.Tools.1.0.1\tools\windows_x86\protoc.exe -I..\proto --csharp_out . --grpc_out . ..\proto\reverse.proto --plugin=protoc-gen-grpc=packages/Grp
+c.Tools.1.0.1/tools/windows_x86/grpc_csharp_plugin.exe
+~~~
+
+This generates `Reverse.cs` and `ReverseGrpc.cs` files to include in your project.
+
