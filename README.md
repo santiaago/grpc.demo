@@ -181,3 +181,21 @@ Got: dlroW ,olleH
 Press any key to exit...
 ~~~
 
+## dotnet core:
+
+* create dotnet core project
+* add grpc dependencies
+* generate csharp files, same as before.
+* build
+* run
+
+Output
+
+~~~
+...\dotnetcore.client
+> dotnet run
+Project dotnetcore.client (.NETCoreApp,Version=v1.0) was previously compiled. Skipping compilation.
+Got: dlroW ,olleH
+Press any key to exit...
+~~~
+
