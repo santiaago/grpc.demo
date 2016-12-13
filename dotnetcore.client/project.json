@@ -1,12 +1,24 @@
 {
+  "title": "dotnetcore.reverse.string",
   "version": "1.0.0-*",
   "buildOptions": {
     "debugType": "portable",
     "emitEntryPoint": true
   },
   "dependencies": {    
+    "Google.Protobuf": "3.0.0",
+    "Grpc": "1.0.1",
   },
   "frameworks": {
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Runtime": "",
+        "System.IO": ""
+      },
+      "dependencies": {
+	"Microsoft.NETCore.Platforms": "1.0.1" 
+      }
+    },
     "netcoreapp1.0": {
       "dependencies": {
         "Microsoft.NETCore.App": {
