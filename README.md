@@ -173,3 +173,11 @@ namespace csharp.client
     }
 }
 ~~~
+
+Run it:
+
+~~~
+Got: dlroW ,olleH
+Press any key to exit...
+~~~
+
