@@ -1,4 +1,8 @@
-# grpc.demo## how
+# grpc.demo
+
+## why
+
+## how
 
 * install [protoc](https://github.com/google/protobuf/releases/tag/v3.0.0)
 * install `protoc-gen-go`
