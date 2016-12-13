@@ -111,3 +111,20 @@ func main() {
 	log.Println("Reversed string: ", r.Reversed)
 }
 ~~~
+
+Output:
+
+server:
+~~~
+...\go.server
+> go run .\main.go
+2016/12/13 14:28:10 transport: http2Server.HandleStreams failed to read frame: read tcp [::1]:50051->[::1]:1195: wsarecv: An existing connection was forcibly closed by the remote host.
+~~~
+
+client:
+~~~
+...\go.client
+> go run .\main.go
+2016/12/13 14:29:20 Reversed string:  dlrow ,olleH
+~~~
+
