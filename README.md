@@ -141,3 +141,35 @@ c.Tools.1.0.1/tools/windows_x86/grpc_csharp_plugin.exe
 
 This generates `Reverse.cs` and `ReverseGrpc.cs` files to include in your project.
 
+Create client:
+
+~~~cs
+using System;
+using Grpc.Core;
+using Reverse;
+
+namespace csharp.client
+{
+    internal class Program
+    {
+        private static void Main()
+        {
+            var channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
+
+            var client = new ReverseService.ReverseServiceClient(channel);
+
+            var reply = client.ReverseString(new ReverseRequest
+            {
+                Data = "Hello, World"
+            });
+
+            Console.WriteLine("Got: " + reply.Reversed);
+
+            channel.ShutdownAsync().Wait();
+
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
+~~~
