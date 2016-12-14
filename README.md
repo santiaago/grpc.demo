@@ -203,11 +203,16 @@ Got: dlroW ,olleH
 Press any key to exit...
 ~~~
 
-Resources:
+## Resources:
 
 * [c# quickstart](http://www.grpc.io/docs/quickstart/csharp.html)
-* [grpc repo](https://github.com/grpc/grpc)
+* [gRPC repo](https://github.com/grpc/grpc)
 * [protocol buffers - Language Guide](https://developers.google.com/protocol-buffers/docs/proto)
-* [grpc Go Quick start](http://www.grpc.io/docs/quickstart/go.html)
+* [gRPC Go Quick start](http://www.grpc.io/docs/quickstart/go.html)
 * [Go support for Google's protocol buffers](https://github.com/golang/protobuf)
-
+* [Practical guide to protocol buffers](http://www.minaandrawos.com/2014/05/27/practical-guide-protocol-buffers-protobuf-go-golang/)
+* [GothamGo 2015: gRPC: Google's high-performance, open-source RPC framework by Sameer Ajmani](https://www.youtube.com/watch?v=sZx3oZt7LVg)
+* [gotham-grpc demo code](https://github.com/golang/talks/tree/master/2015/gotham-grpc)
+* [gRPC: a true internet-scale RPC framework is now 1.0 and ready for production deployments](https://cloudplatform.googleblog.com/2016/08/gRPC-a-true-Internet-scale-RPC-framework-is-now-1-and-ready-for-production-deployments.html)
+* [Google shares gRPC as alternative to REST for microservices](https://opensource.com/bus/15/3/google-grpc-open-source-remote-procedure-calls)
+* [gRPC Motivation and Design Principles](http://www.grpc.io/blog/principles)
