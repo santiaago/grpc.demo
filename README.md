@@ -1,8 +1,32 @@
 # grpc.demo
 
-## why
+## Why
 
-## how
+### gRPC
+
+gRPC is an open source rpc library from google. It is an alternative to REST for microservices. It is based on the HTTP2 standard, and uses protocol buffers (Proto3).
+
+You can use **Unary RPC** (request, response) and **Streaming RPC** (send one or more messages).
+
+gRPC is available in many languages, some of them have there own implementation (C, Go, Java), some a wrapper around the C implementation so you are not tied to any language.
+
+> gRPC extends the Go programming model over the network.
+> It is an excellent fit for building parallel, distributed, and streaming systems.
+[Sameer Ajmani](https://www.youtube.com/watch?v=sZx3oZt7LVg)
+
+gRPC aim to be more efficient than JSON/HTTP. It encodes data with more efficiency thanks to Protocol Buffers and HTTP/2 makes the transport faster.
+
+### Protocol Buffers:
+
+Protocol buffers are used to define a mechanism to serialize structured data. You define the structure of the data (messages) and a service that you want to use to communicate. Then generate the source code for the message(s) and service you defined to use in the server or client.
+
+>Multiple applications written in different programming languages can exchange a large number of messages quickly and reliably without overloading the network. [Practical guide to protocol buffers](http://www.minaandrawos.com/2014/05/27/practical-guide-protocol-buffers-protobuf-go-golang/)
+
+## How
+
+I wanted to build a simple example that tests the client server gRPC request response use case. And I wanted to test how the exchange of different programming languages worked/felt.
+
+I decided to create a **Go server** and a **Go client** to start. Then extend it to a **C# client** that calls the same **Go server** as before. And then try a **dotnet core client** as well.
 
 * install [protoc](https://github.com/google/protobuf/releases/tag/v3.0.0)
 * install `protoc-gen-go`
