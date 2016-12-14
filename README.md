@@ -8,6 +8,8 @@
 * install `protoc-gen-go`
     `go get -u github.com/golang/protobuf/protoc-gen-go`
 
+### The proto file
+
 * create proto file:
 
 ~~~proto
@@ -35,6 +37,8 @@ message ReverseReply {
 ~~~
 
 This generates a `reverse.pb.go` file. It holds the `ReverseRequest` and `ReverseReply` messages types as well as the `ReverseService` client and server.
+
+### gRPC Go server
 
 * create a go server:
 
@@ -78,6 +82,8 @@ func main() {
 	}
 }
 ~~~
+
+### gRPC Go client
 
 * create a Go client:
 
@@ -132,7 +138,7 @@ client:
 2016/12/13 14:29:20 Reversed string:  dlrow ,olleH
 ~~~
 
-## csharp
+### gRPC csharp client
 
 * install `Grpc.Core`, `Grpc.Tools` and `Google.Protobuf` from NuGet.
 * generate c# stub:
@@ -185,7 +191,7 @@ Got: dlroW ,olleH
 Press any key to exit...
 ~~~
 
-## dotnet core:
+### gRPC dotnet core clinet:
 
 * create dotnet core project
 * add grpc dependencies
