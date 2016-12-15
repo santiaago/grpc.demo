@@ -14,6 +14,7 @@ Here is a collection of the information I found about it as well as a simple gRP
     * [gRPC dotnet core client](https://github.com/santiaago/grpc.demo#grpc-dotnet-core-client)
 * [What else](https://github.com/santiaago/grpc.demo#what-else)
 * [Resources](https://github.com/santiaago/grpc.demo#resources)
+
 ## gRPC
 
 gRPC is an open source rpc library from google. It is an alternative to REST for microservices. It is based on the HTTP2 standard, and uses protocol buffers (Proto3).
@@ -254,6 +255,7 @@ Include this in your `package.json` file:
 ~~~
 
 * generate csharp files (same as before).
+* create the client (you can use the same client code as before)
 * build
 * run
 
