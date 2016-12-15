@@ -1,40 +1,55 @@
 # grpc.demo
 
-## Why
+I heard about gRPC some months ago and decided to learn a bit about it.
+Here is a collection of the information I found about it as well as a simple gRPC demo that uses **Go** and **C#**
 
-### gRPC
+* gRPC
+* Protocol Buffers
+* Example
+* Resources
+
+## gRPC
 
 gRPC is an open source rpc library from google. It is an alternative to REST for microservices. It is based on the HTTP2 standard, and uses protocol buffers (Proto3).
 
-You can use **Unary RPC** (request, response) and **Streaming RPC** (send one or more messages).
-
-gRPC is available in many languages, some of them have there own implementation (C, Go, Java), some a wrapper around the C implementation so you are not tied to any language.
+gRPC is available in many languages, some of them have there own implementation (C, Go, Java) and some a wrapper around the C implementation so you are not tied to any language.
 
 > gRPC extends the Go programming model over the network.
 > It is an excellent fit for building parallel, distributed, and streaming systems.
 [Sameer Ajmani](https://www.youtube.com/watch?v=sZx3oZt7LVg)
 
-gRPC aim to be more efficient than JSON/HTTP. It encodes data with more efficiency thanks to Protocol Buffers and HTTP/2 makes the transport faster.
+gRPC aims to be more efficient than JSON/HTTP. It encodes data with more efficiency thanks to Protocol Buffers and HTTP/2 makes the transport faster.
 
-### Protocol Buffers:
+You can use **Unary RPC** (request, response) or **Streaming RPC** (send one or more messages).
 
-Protocol buffers are used to define a mechanism to serialize structured data. You define the structure of the data (messages) and a service that you want to use to communicate. Then generate the source code for the message(s) and service you defined to use in the server or client.
+To learn more about the motivations behind it you should read this web page: [gRPC Motivation and Design Principles](http://www.grpc.io/blog/principles)
+
+## Protocol Buffers:
+
+Protocol buffers are used to define a mechanism to serialize structured data. You define the structure of the data (messages) and a service that you want to use to communicate. Then generate the source code for the message(s) and service(s) you defined to use in the server or client.
 
 >Multiple applications written in different programming languages can exchange a large number of messages quickly and reliably without overloading the network. [Practical guide to protocol buffers](http://www.minaandrawos.com/2014/05/27/practical-guide-protocol-buffers-protobuf-go-golang/)
 
-## How
+## A gRPC example
 
-I wanted to build a simple example that tests the client server gRPC request response use case. And I wanted to test how the exchange of different programming languages worked/felt.
+I wanted to build a simple example to test the **Unary RPC** use case. Test how the exchange between different programming languages worked/felt.
 
-I decided to create a **Go server** and a **Go client** to start. Then extend it to a **C# client** that calls the same **Go server** as before. And then try a **dotnet core client** as well.
+I decided to create a **Go server** and a **Go client** to start. Then extend it to a **C# client** that calls the same **Go server** as before. And finally try a **dotnet core client** as well.
 
-* install [protoc](https://github.com/google/protobuf/releases/tag/v3.0.0)
-* install `protoc-gen-go`
-    `go get -u github.com/golang/protobuf/protoc-gen-go`
+### Installation process
+
+To use gRPC you will have to install `grpc`, `protobuf` and `protoc-gen-go`.
+
+* install grpc
+    * `go get google.golang.org/grpc`
+* install [protocol buffers](https://github.com/google/protobuf/releases/tag/v3.0.0)
+* install the go compiler plugin protoc-gen-go
+    * `go get -u github.com/golang/protobuf/protoc-gen-go`
+    * `protoc-gen-go` is a compiler to generate Go code from a proto file.
 
 ### The proto file
 
-* create proto file:
+The proto file is where you define the gRPC service and the messages that will be used to communicate.
 
 ~~~proto
 syntax = "proto3";
@@ -54,19 +69,17 @@ message ReverseReply {
 }
 ~~~
 
-* generate go code:
+To generate the gRPC code run the following command.
 
 ~~~
-> GOROOT\src\github.com\santiaago\grpc.demo> protoc -I .\proto\ .\proto\reverse.proto --go_out=plugins=grpc:proto
+> ...\grpc.demo> protoc -I .\proto\ .\proto\reverse.proto --go_out=plugins=grpc:proto
 ~~~
 
-This generates a `reverse.pb.go` file. It holds the `ReverseRequest` and `ReverseReply` messages types as well as the `ReverseService` client and server.
+This generates a `reverse.pb.go` file that holds the `ReverseRequest` and `ReverseReply` messages types as well as the `ReverseService` client and server.
 
 ### gRPC Go server
 
-* create a go server:
-
-Create a server type that implements the `ReverseString` function and make the server serve the grpc service:
+Create a `server` type that implements the `ReverseString` function and make the server serve the gRPC service:
 
 ~~~go
 package main
@@ -109,7 +122,7 @@ func main() {
 
 ### gRPC Go client
 
-* create a Go client:
+Create a Go client that dials the gRPC server. Get the client object and call `ReverseString` on it.
 
 ~~~go
 package main
@@ -164,8 +177,9 @@ client:
 
 ### gRPC csharp client
 
-* install `Grpc.Core`, `Grpc.Tools` and `Google.Protobuf` from NuGet.
-* generate c# stub:
+On a c# project install `Grpc.Core`, `Grpc.Tools` and `Google.Protobuf` from **NuGet**.
+
+Then generate the c# classes using `protoc.exe` and `grpc_csharp_plugin.exe`
 
 ~~~
 ...\csharp.client
@@ -173,9 +187,9 @@ client:
 c.Tools.1.0.1/tools/windows_x86/grpc_csharp_plugin.exe
 ~~~
 
-This generates `Reverse.cs` and `ReverseGrpc.cs` files to include in your project.
+This generates `Reverse.cs` and `ReverseGrpc.cs` files. Include them in your project.
 
-Create client:
+You can now create a client that calls the **Go server**
 
 ~~~cs
 using System;
@@ -208,23 +222,36 @@ namespace csharp.client
 }
 ~~~
 
-Run it:
+Output
 
 ~~~
 Got: dlroW ,olleH
 Press any key to exit...
 ~~~
 
-### gRPC dotnet core clinet:
+### gRPC dotnet core client:
+
+The dotnet core client was simple to build as the generated code is the same as for c#.
+
+This is what I did:
 
 * create dotnet core project
 * add grpc dependencies
-* generate csharp files, same as before.
+
+Include this in your `package.json` file:
+
+~~~
+"dependencies": {    
+  "Google.Protobuf": "3.0.0",
+  "Grpc": "1.0.1",
+},
+~~~
+
+* generate csharp files (same as before).
 * build
 * run
 
-Output
-
+Output:
 ~~~
 ...\dotnetcore.client
 > dotnet run
@@ -232,6 +259,13 @@ Project dotnetcore.client (.NETCoreApp,Version=v1.0) was previously compiled. Sk
 Got: dlroW ,olleH
 Press any key to exit...
 ~~~
+
+## What else:
+
+There are some more things I would like to try.
+
+* streaming gRPC calls
+* deploy a demo app to Google Cloud Pub/Sub to see how the deployment experience is.
 
 ## Resources:
 
@@ -249,7 +283,4 @@ Press any key to exit...
 * [Practical guide to protocol buffers](http://www.minaandrawos.com/2014/05/27/practical-guide-protocol-buffers-protobuf-go-golang/)
 * [https://cloud.google.com/blog/big-data/2016/03/announcing-grpc-alpha-for-google-cloud-pubsub](Announcing gRPC Alpha for Google Cloud Pub/Sub)
 
-
-
-
-
+Follow me at @santiago_arias to be notified about more posts like this.
