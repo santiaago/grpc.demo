@@ -3,6 +3,8 @@
 I heard about gRPC some months ago and decided to learn a bit about it.
 Here is a collection of the information I found about it as well as a simple gRPC demo that uses **Go** and **C#**
 
+**Table of contents**
+
 * [gRPC](https://github.com/santiaago/grpc.demo#grpc)
 * [Protocol Buffers](https://github.com/santiaago/grpc.demo#protocol-buffers)
 * [A gRPC example](https://github.com/santiaago/grpc.demo#a-grpc-example)
