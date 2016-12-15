@@ -3,11 +3,17 @@
 I heard about gRPC some months ago and decided to learn a bit about it.
 Here is a collection of the information I found about it as well as a simple gRPC demo that uses **Go** and **C#**
 
-* gRPC
-* Protocol Buffers
-* Example
-* Resources
-
+* [gRPC](https://github.com/santiaago/grpc.demo#grpc)
+* [Protocol Buffers](https://github.com/santiaago/grpc.demo#protocol-buffers)
+* [A gRPC example](https://github.com/santiaago/grpc.demo#a-grpc-example)
+    * [Installation-process](https://github.com/santiaago/grpc.demo#installation-process)
+    * [The proto file](https://github.com/santiaago/grpc.demo#the-proto-file)
+    * [gRPC Go Server](https://github.com/santiaago/grpc.demo#grpc-go-server)
+    * [gRPC Go Client](https://github.com/santiaago/grpc.demo#grpc-go-client)
+    * [gRPC c# client](https://github.com/santiaago/grpc.demo#grpc-csharp-client)
+    * [gRPC dotnet core client](https://github.com/santiaago/grpc.demo#grpc-dotnet-core-client)
+* [What else](https://github.com/santiaago/grpc.demo#what-else)
+* [Resources](https://github.com/santiaago/grpc.demo#resources)
 ## gRPC
 
 gRPC is an open source rpc library from google. It is an alternative to REST for microservices. It is based on the HTTP2 standard, and uses protocol buffers (Proto3).
